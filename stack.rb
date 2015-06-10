@@ -11,8 +11,8 @@ class Stack
     if full?
       return nil
     else
-      @store[@top] = element
       @top = @top.succ
+      @store[@top] = element
     end
     self
   end
