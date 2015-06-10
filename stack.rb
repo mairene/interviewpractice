@@ -23,13 +23,13 @@ class Stack
     else
       @popped = @store.pop
       @store[@top] = nil #holds a placeholder of nil at item that was last popped off
-      @top.prec
+      @top.pred
     end
     popped
   end
 
   def look
-    @store[@top]
+    @store[@to
   end
 
   private
