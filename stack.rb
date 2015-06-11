@@ -29,7 +29,7 @@ class Stack
   end
 
   def look
-    @store[@to
+    @store[@top]
   end
 
   private
