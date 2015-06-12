@@ -22,7 +22,7 @@ def love_intersexion (rectangle_1, rectangle_2)
   overlap_rect[:width] = rectangle_1_x_range[1] - rectangle_2_x_range[0]
   overlap_rect[:height] = rectangle_1_y_range[1] - rectangle_2_y_range[0]
 
-  p overlap_rect
+  overlap_rect
 end
 
 
@@ -37,13 +37,7 @@ rectangle_2 = { x: 8,
                 height: 9
               }
 
-love_intersexion(rectangle_1, rectangle_2)
-
-#REFACTOR
-
-def love_intersexion(rectangle_1, rectangle_2)
-
-end
+p love_intersexion(rectangle_1, rectangle_2)
 
 #HELPER METHODS
 def find_x_overlap (x1, width1, x2, width2)
@@ -55,7 +49,7 @@ def find_x_overlap (x1, width1, x2, width2)
   end
 
   overlap_width = lowest_ending_point - highest_starting_point
-  [highest_starting_point, overlap_width]
+  {starting_point: highest_starting_point, overlap_width: overlap_width}
 end
 
 def find_y_overlap (y1, height1, y2, height2)
@@ -67,5 +61,21 @@ def find_y_overlap (y1, height1, y2, height2)
   end
 
   overlap_height = lowest_ending_point - highest_starting_point
-  [highest_starting_point, overlap_height]
+  {starting_point: highest_starting_point, overlap_height: overlap_height}
 end
+p "*" * 100
+p find_x_overlap(1, 10, 4, 8)
+#REFACTOR
+
+def love_intersexion(rectangle_1, rectangle_2)
+  rectangle_1[:x]
+  x_overlap = find_x_overlap (rectangle_1[:x],rectangle_1[:width],rectangle_2[:x],rectangle_2[:width])
+  y_overlap = find_y_overlap (rectangle_1[:y],rectangle_1[:height],rectangle_2[:y],rectangle_2[:height])
+
+  intersexion_rectangle = { x: x_overlap[:starting_point],
+                            y: y_overlap[:starting_point],
+                            width: x_overlap[:overlap_width],
+                            height: y_overlap[:overlap_height] }
+end
+
+love_intersexion(rectangle_1, rectangle_2)
